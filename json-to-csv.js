@@ -15,7 +15,7 @@ function jsonToCsv(json) {
 function convertFile(inputPath, outputPath) {
     fs.readFile(inputPath, "utf8", (err, data) => {
         if (err) {
-            console.error("Ошибка при чтении файла:", err);
+            console.error("Error reading file:", err);
             return;
         }
 
@@ -25,22 +25,22 @@ function convertFile(inputPath, outputPath) {
 
             fs.writeFile(outputPath, csv, "utf8", err => {
                 if (err) {
-                    console.error("Ошибка при записи файла:", err);
+                    console.error("Error writing file:", err);
                 } else {
-                    console.log(`CSV сохранен в ${outputPath}`);
+                    console.log(`CSV saved in ${outputPath}`);
                 }
             });
         } catch (error) {
-            console.error("Ошибка при разборе JSON:", error);
+            console.error("Error while parsing JSON:", error);
         }
     });
 }
 
-// Пример использования из командной строки
+// Example of usage from the command line
 if (require.main === module) {
     const args = process.argv.slice(2);
     if (args.length !== 2) {
-        console.log("Использование: node json-to-csv.js input.json output.csv");
+        console.log("Using: node json-to-csv.js input.json output.csv");
         process.exit(1);
     }
 
